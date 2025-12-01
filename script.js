@@ -13,7 +13,7 @@ function render() {
             <span class="drag">⠿</span>
             <span class="check"></span>
             <span class="text">${task.text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
-            <span class="del">🗙</span>
+            <span class="del"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7l10 10M7 17L17 7"/></svg></span>
         </li>
     `).join('');
 }
@@ -31,10 +31,12 @@ list.addEventListener('click', e => {
     const li = e.target.closest('li');
     if (!li) return;
     const i = li.dataset.i;
-    
-    if (e.target.classList.contains('del')) {
+    const del = e.target.closest('.del');
+    const drag = e.target.closest('.drag');
+
+    if (del) {
         tasks.splice(i, 1);
-    } else if (!e.target.classList.contains('drag')) {
+    } else if (!drag) {
         tasks[i].done = !tasks[i].done;
     }
     save();

@@ -121,3 +121,13 @@ li:hover .del {
 .del:hover {
     color: rgb(255, 69, 69);
 }
+
+.del {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.del svg {
+    display: block;
+}
